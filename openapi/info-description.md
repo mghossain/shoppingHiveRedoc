@@ -3,7 +3,7 @@ This is a **Web App** that utilizes Laravel/MySQL as backend and ReactJs as fron
 All of the solution can be found in this [Github repo](https://github.com/madewithlove/technical-assignment-full-stack-engineer-mghossain/tree/master).
 
 This documentation is split into two documents:
-- This document contatins the introduction, Objectives, Benefits and Limitations, and software development concepts used.
+- This document contatins the APIs' documentaion, Introduction, Objectives, Benefits and Limitations, and the Software Development Concepts used.
 - The second document contains instructions on how to deploy and run the docker image.
 
 # Introduction
