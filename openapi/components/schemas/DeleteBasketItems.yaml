@@ -1,0 +1,14 @@
+type: object
+title: Scalars
+properties:
+  status:
+    description: The status value
+    type: string
+    examples:
+      - success
+  data:
+    description: The basket item deleted.
+    type: array
+    readOnly: true
+    examples:
+      - ['id', 'product_id', 'created_at', 'updated_at']

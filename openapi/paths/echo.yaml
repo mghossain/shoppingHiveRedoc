@@ -1,54 +1,92 @@
-post:
+get:
   tags:
-    - Echo
-  summary: Echo test
-  description: Receive the exact message you've sent
-  operationId: echo
-  security:
-    - api_key: []
-    - basic_auth: []
+    - BasketItemAPI
+  summary: Index
+  description: Get all the items from the basket_items table
+  operationId: BasketItemAPIIndex
+  security: []
+    # - api_key: []
+    # - basic_auth: []
   responses:
     '200':
       description: OK
-      headers:
-        X-Rate-Limit:
-          description: calls per hour allowed by the user
-          schema:
-            type: integer
-            format: int32
-        X-Expires-After:
-          $ref: ../components/headers/ExpiresAfter.yaml
       content:
         application/json:
           schema:
-            type: string
-          examples:
-            response:
-              value: Hello world!
-        application/xml:
-          schema:
-            type: string
-        text/csv:
-          schema:
-            type: string
-    '400': 
+            $ref: ../components/schemas/GetBasketItems.yaml
+
+    '400':
       description: Unauthorized
   requestBody:
     content:
       application/json:
         schema:
           type: string
-          example: Hello world!
-      application/xml:
-        schema:
-          type: string
-          example: Hello world!
-    description: Echo payload
+          example: null
+    description: payload
     required: true
   x-codeSamples:
-    - lang: "C#"
-      source:
-        $ref: "../code_samples/csharp/echo/post.cs"
     - lang: PHP
       source:
-        $ref: ../code_samples/PHP/echo/post.php
+        $ref: ../code_samples/PHP/echo/getbasket.php
+
+post:
+  tags:
+    - BasketItemAPI
+  summary: Store
+  description: Store the item in the basket and increment the addedCount field in the item_stats table
+  operationId: BasketItemAPIStore
+  security: []
+    # - api_key: []
+    # - basic_auth: []
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/StoreBasketItems.yaml
+    '400':
+      description: Unauthorized
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: string
+          example: null
+    description:  payload
+    required: true
+  x-codeSamples:
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/echo/postbasket.php
+delete:
+  tags:
+    - BasketItemAPI
+  summary: Delete
+  description: Delete the item in the basket and increment the purchasedCount or the removedCount field in the item_stats table depending the stat_type.
+  operationId: BasketItemAPIDelete
+  security: []
+    # - api_key: []
+    # - basic_auth: []
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/DeleteBasketItems.yaml
+    '400':
+      description: Unauthorized
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          example: ['stat_type': 'checkout']
+    description:  payload
+    required: true
+  x-codeSamples:
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/echo/deletebasket.php

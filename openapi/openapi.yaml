@@ -1,41 +1,30 @@
 openapi: 3.1.0
 info:
-  version: 1.0.0
-  title: Example.com
-  termsOfService: 'https://example.com/terms/'
+  version: ''
+  title: Shopping Hive
   contact:
-    email: contact@example.com
-    url: 'http://example.com/contact'
-  license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-  x-logo:
-    url: 'https://redocly.github.io/openapi-template/logo.png'
+    email: mghossain.42@gmail.com
   description:
     $ref: ./info-description.md
 tags:
-  - name: Echo
-    description: Example echo operations.
-  - name: User
-    description: Operations about users.
-  - name: Tag
-    description: This is a tag description.
+  - name: APIs
+    description: This solution contains three APIs
+  - name: BasketItemAPI
+    description: Responsible for showing, storing, and deleting the basket item, as well as handling the sales data by logging the Item Stats.
+  - name: ProductAPI
+    description: Responsible for showing all of the Products.
+  - name: ItemStatAPI
+    description: Responsible for showing the sales stats.
 servers:
-  - url: 'https://{tenant}/api/v1'
-    variables:
-      tenant:
-        default: www
-        description: Your tenant id
-  - url: 'https://example.com/api/v1'
+  - url: 'https://localhost.com/api'
 paths:
-  '/users/{username}':
-    $ref: 'paths/users_{username}.yaml'
-  /echo:
+  /basket:
     $ref: paths/echo.yaml
-  /pathItem:
-    $ref: paths/path-item.yaml
-  /pathItemWithExamples:
-    $ref: paths/path-item-with-examples.yaml
+  /product:
+    $ref: paths/product.yaml
+  /stats:
+    $ref: paths/stats.yaml
+
 components:
   securitySchemes:
     main_auth:
